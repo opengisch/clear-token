@@ -11,9 +11,10 @@ jobs:
     steps:
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+          label: ${{ github.event.label }}
         run: echo "$GITHUB_CONTEXT"
       - name: Get PR info
+        if: label = 'duplicate'
         id: hello
         uses: opengisch/qgis-docbot@v1.0.7
         with:
