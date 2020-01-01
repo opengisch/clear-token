@@ -11,7 +11,8 @@
     "@actions/exec": "^1.0.2",
     "@actions/github": "^2.0.0",
     "@octokit/webhooks": "^7.0.0",
-    "@zeit/ncc": "^0.20.5"
+    "@zeit/ncc": "^0.20.5",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "build": "ncc build src/index.ts --minify --v8-cache",
