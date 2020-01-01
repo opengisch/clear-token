@@ -12,8 +12,8 @@ jobs:
       - name: Dump GitHub context
         env:
           label: ${{ github.event.label.name }}
-          pr_title: ${{ github.event.pull_request.head.title }}
-          pr_number: ${{ github.event.pull_request.head.number }}
+          pr_title: ${{ github.event.pull_request.title }}
+          pr_number: ${{ github.event.pull_request.number }}
           context: ${{ toJson(github) }}
         run: echo "$label $pr_title ($pr_number)"
       - name: Get PR info
