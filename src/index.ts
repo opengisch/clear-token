@@ -2,7 +2,7 @@ import { debug, getInput, setFailed, setOutput, info } from "@actions/core";
 import { context } from "@actions/github";
 import { WebhookPayloadPullRequest } from "@octokit/webhooks";
 
-import { backport } from "./backport";
+import { prinfo } from "./prinfo";
 import { xorHexStrings } from "./xor";
 
 const run = async () => {
@@ -15,19 +15,12 @@ const run = async () => {
 
     //info(JSON.stringify(context, null, 2));
 
-    await backport({
-      botToken,
-      botUsername,
+    const pr_info = await prinfo({
       payload: context.payload as WebhookPayloadPullRequest,
-      token,
     });
 
-    let title = context.payload.pull_request.title;
-
-    info(`THE TITLE #${title}`);
-
-
-    setOutput('pr_text', 'hello');
+    setOutput('pr-number', str(pr_info.number));
+    setOutput('pr-title', str(pr_info.title));
 
   } catch (error) {
     setFailed(error.message);
