@@ -22,6 +22,11 @@ const run = async () => {
       token,
     });
 
+    let title = context.payload.pull_request.title;
+
+    info(`THE TITLE #${title}`);
+
+
     setOutput('pr_text', 'hello');
 
   } catch (error) {
