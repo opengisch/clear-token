@@ -12,7 +12,8 @@ jobs:
       - name: Dump GitHub context
         env:
           label: ${{ github.event.label.name }}
-        run: echo "label"
+          pr-title: ${{ github.event.pull_request.head.title }}
+        run: echo {{ toJson(github) }}
       - name: Get PR info
         if: github.event.label.name == 'duplicate'
         id: hello
