@@ -19,8 +19,8 @@ const run = async () => {
       payload: context.payload as WebhookPayloadPullRequest,
     });
 
-    setOutput('pr-number', str(pr_info.number));
-    setOutput('pr-title', str(pr_info.title));
+    setOutput('pr-number', pr_info.number.toString());
+    setOutput('pr-title', pr_info.title.toString());
 
   } catch (error) {
     setFailed(error.message);

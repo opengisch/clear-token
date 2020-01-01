@@ -15,7 +15,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Get PR info
         id: hello
-        uses: opengisch/qgis-docbot@v1.0.6
+        uses: opengisch/qgis-docbot@v1.0.7
         with:
           repo_slug: qgis/QGIS-Documentation
           bot_username: qgis-bot

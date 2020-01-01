@@ -1,6 +1,6 @@
 {
   "name": "docbot",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Create an issue in remote repo when a PR is labeled.",
   "files": [
     "action.yml",
