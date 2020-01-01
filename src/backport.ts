@@ -34,8 +34,7 @@ const backport = async ({
 }) => {
 
   info(`Pull request #${pullRequestNumber}`);
-  info(`Pull request #${WebhookPayloadPullRequest["action"]}`);
-  info(`Pull request #${WebhookPayloadPullRequest["pull_request"]}`);
+  info(`Pull request title #${originalTitle}`);
 
 };
 
