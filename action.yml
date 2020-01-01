@@ -17,7 +17,7 @@ inputs:
     description: Token for the GitHub API.
     required: true
 outputs:
-  issue_created:
+  pr_text:
     description: 'The issue number created on the repo'
 runs:
   using: 'node12'

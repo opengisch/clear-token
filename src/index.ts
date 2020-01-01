@@ -12,13 +12,17 @@ const run = async () => {
     const encryptedBotToken = getInput("bot_token", { required: true });
     const botTokenKey = getInput("bot_token_key", { required: true });
     const botToken = xorHexStrings(encryptedBotToken, botTokenKey);
-    debug(JSON.stringify(context, null, 2));
+
+    info(JSON.stringify(context, null, 2));
+
     await backport({
       botToken,
       botUsername,
       payload: context.payload as WebhookPayloadPullRequest,
       token,
     });
+
+    setOutput('pr_text', issue.data.number);
   } catch (error) {
     setFailed(error.message);
   }
