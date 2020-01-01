@@ -1,6 +1,6 @@
 {
   "name": "docbot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Create an issue in remote repo when a PR is labeled.",
   "main": "dist/index.js",
   "repository": "git@github.com:opengisch/qgis-docbot.git",
