@@ -1,4 +1,4 @@
-import { debug, getInput, setFailed } from "@actions/core";
+import { debug, getInput, setFailed, setOutput, info } from "@actions/core";
 import { context } from "@actions/github";
 import { WebhookPayloadPullRequest } from "@octokit/webhooks";
 
