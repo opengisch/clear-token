@@ -1,8 +1,8 @@
 
 
 
-name: 'PR label to issue in remote repo'
-description: 'Create an issue in remote repo when a PR is labeled.'
+name: 'Labeled pull request info'
+description: 'Get the title and number of a labeled pull request'
 inputs:
   repo_slug:
     description: The repo where to create the issue
@@ -17,8 +17,10 @@ inputs:
     description: Token for the GitHub API.
     required: true
 outputs:
-  pr_text:
-    description: 'The issue number created on the repo'
+  pr-number:
+    description: 'The PR number'
+  pr-title:
+    description: 'The PR title'
 runs:
   using: 'node12'
   main: 'dist/index.js'
