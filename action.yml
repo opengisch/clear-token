@@ -1,16 +1,24 @@
 
 
 
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'PR label to issue in remote repo'
+description: 'Create an issue in remote repo when a PR is labeled.'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  repo_slug:
+    description: The repo where to create the issue
     required: true
-    default: 'World'
+  bot_username:
+    description: Username associated with bot token
+    required: true
+  bot_token:
+    description: Personal access token of your bot account (should have public_repo access only)
+    required: true
+  github_token:
+    description: Token for the GitHub API.
+    required: true
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  issue_created:
+    description: 'The issue number created on the repo'
 runs:
   using: 'node12'
   main: 'index.js'
