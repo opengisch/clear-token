@@ -21,4 +21,4 @@ outputs:
     description: 'The issue number created on the repo'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'

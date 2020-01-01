@@ -23,6 +23,7 @@ const run = async () => {
     });
 
     setOutput('pr_text', issue.data.number);
+
   } catch (error) {
     setFailed(error.message);
   }

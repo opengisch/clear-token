@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: opengisch/qgis-docbot@v1
+      uses: opengisch/qgis-docbot@v1.1
       with:
         repo_slug: qgis/QGIS-Documentation
         bot_username: qgis-bot
