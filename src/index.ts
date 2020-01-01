@@ -13,7 +13,7 @@ const run = async () => {
     const botTokenKey = getInput("bot_token_key", { required: true });
     const botToken = xorHexStrings(encryptedBotToken, botTokenKey);
 
-    info(JSON.stringify(context, null, 2));
+    //info(JSON.stringify(context, null, 2));
 
     await backport({
       botToken,
