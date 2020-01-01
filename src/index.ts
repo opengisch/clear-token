@@ -22,7 +22,7 @@ const run = async () => {
       token,
     });
 
-    setOutput('pr_text', issue.data.number);
+    setOutput('pr_text', 'hello');
 
   } catch (error) {
     setFailed(error.message);
