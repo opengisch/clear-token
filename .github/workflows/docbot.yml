@@ -15,7 +15,7 @@ jobs:
           pr_title: ${{ github.event.pull_request.title }}
           pr_number: ${{ github.event.pull_request.number }}
           context: ${{ toJson(github) }}
-        run: echo "$label $pr_title ($pr_number)"
+        run: echo "$pr_title"
       - name: Get PR info
         if: github.event.label.name == 'duplicate'
         id: hello
