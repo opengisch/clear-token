@@ -12,7 +12,7 @@ jobs:
     name: Create issue on doc repo for labeled issue
     steps:
       - name: Clear GH Token
-        if: github.event.pull_request.merged == 'merged' && 'documentation' IN github.event.pull_request.labels
+        if: github.event.pull_request.merged == 'merged' && contains('documentation', github.event.pull_request.labels)
         id: token
         uses: opengisch/clear-token@v1.0.12
         with:
