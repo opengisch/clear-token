@@ -2,7 +2,7 @@
 
 
 name: 'Clear Token'
-description: 'This will allow to use a Github token when jobs are triggered on pull requests from forks. This will obfuscate the key, Github will not complain that the key is in clear in the repo.'
+description: 'Decrypt a key using xor. This will allow to use a Github token when jobs are triggered on pull requests from forks.'
 inputs:
   bot_token_encrypted:
     description: The token encrypted using xor
@@ -17,5 +17,5 @@ runs:
   using: 'node12'
   main: 'dist/index.js'
 branding:
-  icon: key
+  icon: briefcase
   color: green
