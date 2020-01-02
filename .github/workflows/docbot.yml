@@ -9,10 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Create issue on doc repo for labeled issue
     steps:
-      - name: Dump GitHub context
-        env:
-          context: ${{ toJson(github) }}
-        run: echo "$context"
       - name: Clear GH Token
         if: github.event.label.name == 'documentation'
         id: token
