@@ -12,6 +12,7 @@ inputs:
     required: true
 outputs:
   token:
+    description: The clear token in output
 runs:
   using: 'node12'
   main: 'dist/index.js'

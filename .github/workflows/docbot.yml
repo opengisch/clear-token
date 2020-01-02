@@ -12,7 +12,7 @@ jobs:
       - name: Clear GH Token
         if: github.event.label.name == 'documentation'
         id: token
-        uses: opengisch/clear-token@v1.0.9
+        uses: opengisch/clear-token@v1.0.10
         with:
           bot_token_encrypted: ddbdec32940df79f1adf2369b4b10f10b5a66f65
           bot_token_xor_key: a1b2c3d47311f8e29e204f85a81b4df4a44e252c
