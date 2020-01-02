@@ -1,26 +1,20 @@
 
 
 
-name: 'Labeled pull request info'
-description: 'Get the title and number of a labeled pull request'
+name: 'Clear Token'
+description: 'This will allow to use a Github token when jobs are triggered on pull requests from forks. This will obfuscate the key, Github will not complain that the key is in clear in the repo.'
 inputs:
-  repo_slug:
-    description: The repo where to create the issue
+  bot_token_encrypted:
+    description: The token encrypted using xor
     required: true
-  bot_username:
-    description: Username associated with bot token
-    required: true
-  bot_token:
-    description: Personal access token of your bot account (should have public_repo access only)
-    required: true
-  github_token:
-    description: Token for the GitHub API.
+  bot_token_xor_key:
+    description: The xor key
     required: true
 outputs:
-  pr-number:
-    description: 'The PR number'
-  pr-title:
-    description: 'The PR title'
+  token:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: key
+  color: green

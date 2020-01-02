@@ -1,24 +1,27 @@
 
 
 
-# PR to issue
+# Clear Token
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This will allow to use a Github token when jobs are triggered on pull requests from forks. 
+This will obfuscate the key, Github will not complain that the key is in clear in the repo.
 
 ## Inputs
 
-### `who-to-greet`
+### `bot_token_encrypted`
 
-**Required** The name of the person to greet. Default `"World"`.
+The token encrypted using xor
 
-## Outputs
+required: true
 
-### `time`
+### `bot_token_xor_key:
 
-The time we greeted you.
+The xor key
+
+required: true
 
 ## Example usage
 
-uses: actions/hello-world-javascript-action@v1
+uses: actions/clear-token@v1
 with:
-  who-to-greet: 'Mona the Octocat'
+  bot-token-encrypted: 'Mona the Octocat'

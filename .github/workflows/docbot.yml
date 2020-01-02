@@ -8,31 +8,29 @@ jobs:
   docbot:
     runs-on: ubuntu-latest
     name: Create issue on doc repo for labeled issue
+    if: github.event.label.name == 'documentation'
     steps:
       - name: Dump GitHub context
         env:
-          label: ${{ github.event.label.name }}
-          pr_title: ${{ github.event.pull_request.title }}
-          pr_number: ${{ github.event.pull_request.number }}
           context: ${{ toJson(github) }}
-        run: echo "$pr_title"
+        run: echo "$context"
+      - name: Clear GH Token
+        id: token
+        uses: opengisch/clear-token@v1.0.8
+        with:
+          bot_token_encrypted: ddbdec32940df79f1adf2369b4b10f10b5a66f65
+          bot_token_xor_key: a1b2c3d47311f8e29e204f85a81b4df4a44e252c
       - name: Create Documentation issue
+        id: doc_issue
         uses: maxkomarychev/oction-create-issue@v0.7.1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.token.outputs.token }}
+          owner: qgis
+          repo: QGIS-Documentation
           title: ${{ format('Request in QGIS ({1})', github.event.pull_request.number, github.event.pull_request.title) }}
-          body: ${{ format('Request for documentation in QGIS/qgis#{0}\n{1})', github.event.pull_request.number, github.event.pull_request.title) }}
+          body: ${{ format('Request for documentation in QGIS/qgis#{0} {1})', github.event.pull_request.number, github.event.pull_request.title) }}
       - name: Print outputs
         run: |
-          echo ${{ steps.my_step_id.outputs.id }}
-          echo ${{ steps.my_step_id.outputs.number }}
-      - name: Get PR info
-        if: github.event.label.name == 'duplicate'
-        id: hello
-        uses: opengisch/qgis-docbot@v1.0.7
-        with:
-          repo_slug: qgis/QGIS-Documentation
-          bot_username: qgis-bot
-          bot_token: ddbdec32940df79f1adf2369b4b10f10b5a66f65
-          bot_token_key: a1b2c3d47311f8e29e204f85a81b4df4a44e252c
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          echo ${{ steps.doc_issue.outputs.id }}
+          echo ${{ steps.doc_issue.outputs.number }}
+
