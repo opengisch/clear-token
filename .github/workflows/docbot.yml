@@ -4,7 +4,7 @@ name: Test PR label to issue
 on:
   pull_request:
     types:
-      - merged
+      - closed
 
 jobs:
   docbot:
