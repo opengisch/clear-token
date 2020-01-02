@@ -1,9 +1,11 @@
 
+name: Test PR label to issue
 
 on:
   pull_request:
     types:
       - labeled
+
 jobs:
   docbot:
     runs-on: ubuntu-latest
