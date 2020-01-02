@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.0",
+    "@types/node": "^13.1.2",
     "@zeit/ncc": "^0.20.5"
   },
   "scripts": {

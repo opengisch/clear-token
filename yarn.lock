@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.2.0.tgz#aa5f52b26c362c821d41557e599371a42f6c0b3d"
   integrity sha512-ZKdyhlSlyz38S6YFfPnyNgCDZuAF2T0Qv5eHflNWytPS8Qjvz39bZFMry9Bb/dpSnqWcNeav5yM2CTYpJeY+Dw==
 
+"@types/node@^13.1.2":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.2.tgz#fe94285bf5e0782e1a9e5a8c482b1c34465fa385"
+  integrity sha512-B8emQA1qeKerqd1dmIsQYnXi+mmAzTB7flExjmy5X1aVAKFNNNDubkavwR13kR6JnpeLp3aLoJhwn9trWPAyFQ==
+
 "@zeit/ncc@^0.20.5":
   version "0.20.5"
   resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.20.5.tgz#a41af6e6bcab4a58f4612bae6137f70bce0192e3"
