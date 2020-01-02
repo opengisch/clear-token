@@ -1,6 +1,6 @@
 {
   "name": "clear-token",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "This will allow to use a Github token when jobs are triggered on pull requests from forks. This will obfuscate the key, Github will not complain that the key is in clear in the repo.",
   "files": [
     "action.yml",
