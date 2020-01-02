@@ -4,7 +4,7 @@ name: Test PR label to issue
 on:
   pull_request:
     types:
-      - labeled
+      - merged
 
 jobs:
   docbot:
@@ -12,7 +12,7 @@ jobs:
     name: Create issue on doc repo for labeled issue
     steps:
       - name: Clear GH Token
-        if: github.event.label.name == 'documentation'
+        if: github.event.pull_request.merged = 'merged' AND 'documentation' IN github.event.pull_request.labels
         id: token
         uses: opengisch/clear-token@v1.0.12
         with:
