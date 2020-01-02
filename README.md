@@ -22,6 +22,9 @@ required: true
 
 ## Example usage
 
-uses: actions/clear-token@v1
+```
+uses: actions/clear-token@v1.0.11
 with:
-  bot-token-encrypted: 'Mona the Octocat'
+  bot_token_encrypted: …
+  bot_token_xor_key: …
+```
