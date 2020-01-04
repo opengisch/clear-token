@@ -10,8 +10,10 @@ jobs:
   docbot:
     runs-on: ubuntu-latest
     name: Create issue on doc repo for labeled issue
-    if: github.event.pull_request.merged && contains('documentation', github.event.pull_request.labels)
+    if: github.event.pull_request.merged
     steps:
+      - name: debug
+        run echo $ {{ toJson(github) }}
       - name: Clear GH Token
         id: token
         uses: opengisch/clear-token@v1.0.12
