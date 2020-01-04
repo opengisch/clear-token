@@ -1,0 +1,27 @@
+
+
+name: Backport
+on:
+  pull_request:
+    types:
+      - closed
+      - labeled
+
+jobs:
+  backport:
+    if: contains( join(github.event.pull_request.labels.*.name), 'backport')
+    runs-on: ubuntu-18.04
+    name: Backport
+
+    steps:
+      - name: Clear GH Token
+        id: token
+        uses: opengisch/clear-token@v1.0.12
+        with:
+          bot_token_encrypted: ddbdec32940df79f1adf2369b4b10f10b5a66f65
+          bot_token_xor_key: a1b2c3d47311f8e29e204f85a81b4df4a44e252c
+
+      - name: Backport Bot
+        uses: tibdex/backport@v1
+        with:
+          github_token: ${{ steps.token.outputs.token }}
