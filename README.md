@@ -8,13 +8,13 @@ By doing so, you will be able to use a Github token in jobs triggered from pull 
 
 ## Inputs
 
-### `bot_token_encrypted`
+### `bot_token_encrypted`:
 
 The token encrypted using xor
 
 required: true
 
-### `bot_token_xor_key:
+### `bot_token_xor_key`:
 
 The xor key
 
