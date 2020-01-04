@@ -10,7 +10,7 @@ jobs:
   docbot:
     runs-on: ubuntu-latest
     name: Create issue on doc repo for labeled issue
-    if: github.event.pull_request.merged
+    if: github.event.pull_request.merged && contains( github.event.pull_request.labels.*.name, 'documentation')
     steps:
       - name: debug
         env:
