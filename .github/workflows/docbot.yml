@@ -5,17 +5,32 @@ on:
   pull_request:
     types:
       - closed
+      - open
 
 jobs:
   docbot:
     runs-on: ubuntu-latest
     name: Create issue on doc repo for labeled issue
-    if: github.event.pull_request.merged && contains( github.event.pull_request.labels.*.name, 'documentation')
+    # if: github.event.pull_request.merged && contains( github.event.pull_request.labels.*.name, 'documentation')
     steps:
       - name: debug
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
+      - name: QGIS milestone to Doc label
+        id: milestone2label
+        env:
+          MILESTONE: cat ${{ github.event.pull_request.milestone }} | sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/'
+        run: echo "${MILESTONE}"
+
+
+      - name: QGIS milestone to Doc label
+        id: milestone2label
+        env:
+          MILESTONE: ${{ github.event.pull_request.milestone }}
+        run: echo "::set-output name=label::"$(cat ${MILESTONE} | sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/')
+
       - name: Clear GH Token
         id: token
         uses: opengisch/clear-token@v1.0.12
