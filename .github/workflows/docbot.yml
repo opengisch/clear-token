@@ -27,7 +27,7 @@ jobs:
       - name: QGIS milestone to Doc label 2
         id: milestone2label2
         env:
-          MILESTONE: ${{ github.event.pull_request.milestone }}
+          MILESTONE: ${{ github.event.pull_request.milestone.title }}
         run: |
           LABEL=$(cat ${MILESTONE} | sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/')
           echo ${LABEL}
