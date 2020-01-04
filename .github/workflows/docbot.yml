@@ -13,7 +13,7 @@ jobs:
     if: github.event.pull_request.merged
     steps:
       - name: debug
-        run echo $ {{ toJson(github) }}
+        run: echo $ {{ toJson(github) }}
       - name: Clear GH Token
         id: token
         uses: opengisch/clear-token@v1.0.12
