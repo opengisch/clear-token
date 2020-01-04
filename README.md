@@ -3,8 +3,8 @@
 
 # Clear Token
 
-This will allow to use a Github token when jobs are triggered on pull requests from forks. 
-This will obfuscate the key, Github will not complain that the key is in clear in the repo.
+This action lets you manually specify a Token by obfuscating it using xor.
+By doing so, you will be able to use a Github token in jobs triggered from pull requests on forks. 
 
 ## Inputs
 
