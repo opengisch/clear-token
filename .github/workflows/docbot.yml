@@ -43,9 +43,9 @@ jobs:
         uses: maxkomarychev/oction-create-issue@v0.7.1
         with:
           token: ${{ steps.token.outputs.token }}
-          title: ${{ format('Request in QGIS ({1})', github.event.pull_request.number, github.event.pull_request.title) }}
+          title: ${{ format('Request in QGIS ({1})', github.event.pull_request.title) }}
           body: |
-            ${{ format('Request for documentation in QGIS/qgis#{0})', github.event.pull_request.number }}
+            ${{ format('Request for documentation in QGIS/qgis#{0})', github.event.pull_request.number) }}
             ${{ github.event.pull_request.title }}
       - name: Print outputs
         run: |
