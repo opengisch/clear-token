@@ -30,7 +30,7 @@ jobs:
           echo "::set-output name=label::${LABEL}"
 
       - name: output
-        run: echo ${{ steps.milestone2label2.outputs.label }}
+        run: echo __${{ steps.milestone2label2.outputs.label }}__
 
       - name: Clear GH Token
         id: token
@@ -45,11 +45,13 @@ jobs:
         with:
           token: ${{ steps.token.outputs.token }}
           title: ${{ format('Request in QGIS ({0})', github.event.pull_request.title) }}
-          labels: 3.12
-          # labels: ${{ steps.milestone2label.outputs.label }}
+          # do not modify the QGIS version, an action automatically creates a label in the doc repo
+          # this is not possible to set labels directly due to security reasons
+          # the token is in clear, so no rights are given to qgis-bot
           body: |
             ${{ format('Request for documentation in QGIS/qgis#{0})', github.event.pull_request.number) }}
             ${{ github.event.pull_request.title }}
+            QGIS version: ${{ steps.milestone2label.outputs.label }}
 
 
       - name: Print outputs
