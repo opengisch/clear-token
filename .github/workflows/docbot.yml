@@ -53,7 +53,6 @@ jobs:
             ${{ github.event.pull_request.title }}
             QGIS version: ${{ steps.milestone2label.outputs.label }}
 
-
       - name: Print outputs
         run: |
           echo ${{ steps.doc_issue.outputs.id }}
