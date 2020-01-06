@@ -45,10 +45,13 @@ jobs:
         with:
           token: ${{ steps.token.outputs.token }}
           title: ${{ format('Request in QGIS ({0})', github.event.pull_request.title) }}
+          labels: 3.12
+          # labels: ${{ steps.milestone2label.outputs.label }}
           body: |
             ${{ format('Request for documentation in QGIS/qgis#{0})', github.event.pull_request.number) }}
             ${{ github.event.pull_request.title }}
-          labels: ${{ steps.milestone2label.outputs.label }}
+
+
       - name: Print outputs
         run: |
           echo ${{ steps.doc_issue.outputs.id }}
