@@ -19,7 +19,7 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: QGIS milestone to Doc label 2
-        id: milestone2label2
+        id: milestone2label
         env:
           MILESTONE: ${{ github.event.pull_request.milestone.title }}
         run: |
@@ -30,7 +30,7 @@ jobs:
           echo "::set-output name=label::${LABEL}"
 
       - name: output
-        run: echo __${{ steps.milestone2label2.outputs.label }}__
+        run: echo __${{ steps.milestone2label.outputs.label }}__
 
       - name: Clear GH Token
         id: token
