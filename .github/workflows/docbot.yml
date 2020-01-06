@@ -30,8 +30,10 @@ jobs:
           MILESTONE: ${{ github.event.pull_request.milestone.title }}
         run: |
           LABEL=$(sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/' <<< ${MILESTONE})
+          echo $(sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/' <<< ${MILESTONE})
+          echo `sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/' <<< ${MILESTONE}`
           echo ${LABEL}
-          ehoc "::set-output name=label::${LABEL}"
+          echo "::set-output name=label::${LABEL}"
 
 
       - name: Clear GH Token
