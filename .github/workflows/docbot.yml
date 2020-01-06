@@ -35,6 +35,10 @@ jobs:
           echo ${LABEL}
           echo "::set-output name=label::${LABEL}"
 
+      - name: output
+        run: echo ${{ steps.milestone2label2.outputs.label }}
+
+
 
       - name: Clear GH Token
         id: token
