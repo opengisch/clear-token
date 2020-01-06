@@ -29,7 +29,7 @@ jobs:
         env:
           MILESTONE: ${{ github.event.pull_request.milestone.title }}
         run: |
-          LABEL=$(cat ${MILESTONE} | sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/')
+          LABEL=$(sed -r 's/^([[:digit:]]\.[[:digit:]]+)(\.[[:digit:]]+)?$/\1/' <<< ${MILESTONE})
           echo ${LABEL}
           ehoc "::set-output name=label::${LABEL}"
 
