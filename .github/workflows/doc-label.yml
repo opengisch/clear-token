@@ -1,0 +1,27 @@
+
+
+name: Ping PR author about documentation
+
+on:
+  pull_request:
+    types:
+      - opened
+      - labeled
+jobs:
+  test:
+    if: contains( github.event.pull_request.labels.*.name, 'Needs Documentation')
+    runs-on: ubuntu-latest
+    steps:
+      # write comment to ping the PR author
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ steps.token.outputs.token }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            @${{ github.event.pull_request.user.login }}
+            This pull request has been tagged as requiring documentation.
+            A documentation ticket will be opened at https://github.com/qgis/QGIS-Documentation when this PR is merged.
+            Please update the description (not the comments) with helpful description and screenshot to help the work from documentors.
+            Thank you!
+          reaction-type: 'rocket'
