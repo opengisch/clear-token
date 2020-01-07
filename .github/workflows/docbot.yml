@@ -69,7 +69,7 @@ jobs:
           query: |
             query
               repository($owner:String!,$repo:String!) {
-                pullRequest(number: $pr:Int!) {
+                pullRequest($number:Int!) {
                   commits(first: 10) {
                     edges {
                       node {
@@ -94,7 +94,7 @@ jobs:
               }
           owner: ${{ github.event.repository.owner.name }}
           repo: ${{ github.event.repository.name }}
-          pr: $ {{ github.event.pull_request.number }}
+          number: $ {{ github.event.pull_request.number }}
         env:
           GITHUB_TOKEN: ${{ steps.token.outputs.token }}
 
