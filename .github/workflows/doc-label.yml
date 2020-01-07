@@ -28,8 +28,12 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             @${{ github.event.pull_request.user.login }}
-            This pull request has been tagged as requiring documentation.
-            A documentation ticket will be opened at https://github.com/qgis/QGIS-Documentation when this PR is merged.
-            Please update the description (not the comments) with helpful description and screenshot to help the work from documentors.
+            This pull request has been tagged as **requiring documentation**.
+
+            A documentation ticket will be opened at https://github.com/qgis/QGIS-Documentation **when this PR is merged**.
+
+            **Please update the description** (not the comments) with helpful description and screenshot to help the work from documentors.
+            Also, any commit having [needs-doc] or [Needs Documentation] in will see its message pushed to the issue, so please be as verbose as you can.
+
             Thank you!
           reaction-type: 'rocket'
