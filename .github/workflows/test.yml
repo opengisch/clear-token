@@ -65,7 +65,7 @@ jobs:
           echo "::set-output name=commits::${COMMITS_MESSAGES}"
 
       - env:
-          DATA: ${{ steps.filtered_commits.outputs.data }}
+          DATA: ${{ steps.filtered_commits.outputs.commits }}
         run: "echo $DATA"
 
 
