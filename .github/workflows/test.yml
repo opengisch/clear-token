@@ -21,7 +21,7 @@ jobs:
           bot_token_encrypted: ddbdec32940df79f1adf2369b4b10f10b5a66f65
           bot_token_xor_key: a1b2c3d47311f8e29e204f85a81b4df4a44e252c
 
-      # get the body text comment id
+      # get the PR body
       - uses: octokit/request-action@v2.x
         id: get_pr_info
         env:
@@ -41,6 +41,21 @@ jobs:
 
       - env:
           DATA: ${{ steps.get_pr_body.outputs.data }}
+        run: "echo $DATA"
+
+      # get commits from the PR
+      - uses: octokit/request-action@v2.x
+        id: get_pr_commits
+        env:
+          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
+        with:
+          route: GET /repos/:owner/:repo/pulls/:commits
+          owner: qgis
+          repo: QGIS
+          pull_number: 33496
+
+      - env:
+          DATA: ${{ steps.get_pr_commits.outputs.data }}
         run: "echo $DATA"
 
 
