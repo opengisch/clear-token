@@ -23,7 +23,7 @@ jobs:
 
       # get the body text comment id
       - uses: octokit/request-action@v2.x
-        id: get_pr_comments
+        id: get_pr_info
         env:
           GITHUB_TOKEN: ${{ steps.token.outputs.token }}
         with:
@@ -32,8 +32,15 @@ jobs:
           repo: QGIS
           pull_number: 33496
 
+      # extract body from json output
+      - id: get_pr_body
+        uses: gr2m/get-json-paths-action@v1.x
+        with:
+          json: ${{ steps.get_pr_info.outputs.data }}
+          body: "body"
+
       - env:
-          DATA: ${{ steps.get_pr_comments.outputs.data }}
+          DATA: ${{ steps.get_pr_body.outputs.data }}
         run: "echo $DATA"
 
 
