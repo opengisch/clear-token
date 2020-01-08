@@ -74,14 +74,14 @@ jobs:
           pull_number: ${{ github.event.pull_request.number }}
 
       - env:
-          DATA: ${{ toJson(steps.get_pr_body.outputs.data ) }}
-        run: |
-          "echo $DATA"
+          DATA: ${{ steps.get_pr_body.outputs.data }}
+        run: "echo $DATA"
 
       - env:
-          DATA: ${{ steps.get_pr_body.outputs.data }}
-        run: |
-          "echo $DATA"
+          DATA: ${{ toJson(steps.get_pr_body.outputs.data ) }}
+        run: "echo $DATA"
+
+
 
       # get the body text
       - uses: octokit/graphql-action@v2.x
