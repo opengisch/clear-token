@@ -71,7 +71,7 @@ jobs:
           route: GET /repos/:owner/:repo/issues/:pull_number/comments
           owner: opengisch
           repo: clear-token
-          pull_number: $ {{ github.event.pull_request.number }}
+          pull_number: ${{ github.event.pull_request.number }}
 
       - run: "echo latest release: ${{ steps.get_pr_body.outputs }}"
 
