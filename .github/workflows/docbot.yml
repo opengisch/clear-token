@@ -63,6 +63,19 @@ jobs:
           reaction-type: 'rocket'
 
       # get the body text
+      - uses: octokit/request-action@v2.x
+        id: get_pr_body
+        env:
+          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
+        with:
+          route: GET /repos/:owner/:repo/issues/:pull_number/comments
+          owner: opengisch
+          repo: clear-token
+          pull_number: $ {{ github.event.pull_request.number }}
+
+      - run: "echo latest release: ${{ steps.get_pr_body.outputs }}"
+
+      # get the body text
       - uses: octokit/graphql-action@v2.x
         id: doc_info
         with:
