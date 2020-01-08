@@ -28,9 +28,9 @@ jobs:
           GITHUB_TOKEN: ${{ steps.token.outputs.token }}
         with:
           route: GET /repos/:owner/:repo/issues/:pull_number/comment/1
-          owner: opengisch
-          repo: clear-token
-          pull_number: ${{ github.event.pull_request.number }}
+          owner: qgis
+          repo: QGIS
+          pull_number: 33496
 
       - env:
           DATA: ${{ steps.get_pr_body.outputs.data }}
