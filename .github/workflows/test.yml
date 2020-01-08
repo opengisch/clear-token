@@ -33,7 +33,7 @@ jobs:
           pull_number: 33496
 
       - env:
-          DATA: ${{ steps.get_pr_comments.outputs.data.body }}
+          DATA: ${{ steps.get_pr_comments.outputs.data }}
         run: "echo $DATA"
 
 
