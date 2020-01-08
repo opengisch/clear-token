@@ -27,23 +27,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.token.outputs.token }}
         with:
-          route: GET /repos/:owner/:repo/issues/:pull_number/comments
+          route: GET /repos/:owner/:repo/pulls/:pull_number
           owner: qgis
           repo: QGIS
           pull_number: 33496
 
       - env:
-          DATA: ${{ steps.get_pr_comments.outputs.data }}
+          DATA: ${{ steps.get_pr_comments.outputs.data.body }}
         run: "echo $DATA"
 
-      # get the body text
-      - uses: octokit/request-action@v2.x
-        id: get_pr_body
-        env:
-          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
-        with:
-          route: GET /repos/:owner/:repo/issues/comments/:comment_id
-          owner: qgis
-          repo: QGIS
-          comment_id: ${{ steps.get_pr_comments.outputs.data[0].id }}
 
