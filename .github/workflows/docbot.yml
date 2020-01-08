@@ -73,7 +73,9 @@ jobs:
           repo: clear-token
           pull_number: ${{ github.event.pull_request.number }}
 
-      - run: "echo latest release: ${{ toJson(steps.get_pr_body.outputs) }}"
+      - env:
+          DATA: ${{ toJson(steps.get_pr_body.outputs) }}
+        run: "echo $DATA"
 
       # get the body text
       - uses: octokit/graphql-action@v2.x
