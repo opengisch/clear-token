@@ -55,7 +55,8 @@ jobs:
           pull_number: 33496
 
       # extracts the matching commits
-      - env:
+      - id: filtered_commits
+        env:
           JSON_DATA: ${{ steps.get_pr_commits.outputs.data }}
         run: |
           sudo apt-get install jq
@@ -64,7 +65,7 @@ jobs:
           echo "::set-output name=commits::${COMMITS_MESSAGES}"
 
       - env:
-          DATA: ${{ steps.get_pr_commits.outputs.data }}
+          DATA: ${{ steps.filtered_commits.outputs.data }}
         run: "echo $DATA"
 
 
