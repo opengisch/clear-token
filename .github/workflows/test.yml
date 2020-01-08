@@ -1,0 +1,37 @@
+
+
+name: test
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  pr2docissue:
+    # if: contains( github.event.pull_request.labels.*.name, 'Needs Documentation')
+    runs-on: ubuntu-latest
+    name: Create issue on doc repo for labeled issue
+    steps:
+
+      # obfuscate the github token so it can be used on jobs triggered from forks
+      - name: Clear GH Token
+        id: token
+        uses: opengisch/clear-token@v1.0.12
+        with:
+          bot_token_encrypted: ddbdec32940df79f1adf2369b4b10f10b5a66f65
+          bot_token_xor_key: a1b2c3d47311f8e29e204f85a81b4df4a44e252c
+
+      # get the body text
+      - uses: octokit/request-action@v2.x
+        id: get_pr_body
+        env:
+          GITHUB_TOKEN: ${{ steps.token.outputs.token }}
+        with:
+          route: GET /repos/:owner/:repo/issues/:pull_number/comment/1
+          owner: opengisch
+          repo: clear-token
+          pull_number: ${{ github.event.pull_request.number }}
+
+      - env:
+          DATA: ${{ steps.get_pr_body.outputs.data }}
+        run: "echo $DATA"
