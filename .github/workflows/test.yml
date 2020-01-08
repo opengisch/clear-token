@@ -60,9 +60,8 @@ jobs:
           JSON_DATA: ${{ steps.get_pr_commits.outputs.data }}
         run: |
           sudo apt-get install jq
-          COMMITS_MESSAGES=$(echo ${JSON_DATA} | jq '.[].commit.message | select( . | test("\\[needs?.doc(umentation)?s?\\]", "i"))')
-          echo ${COMMITS_MESSAGES}
-          echo "::set-output name=commits::${COMMITS_MESSAGES}"
+          COMMITS_MESSAGES=$(cat ~/Documents/temp/test.json | jq '.[].commit.message | select( . |test("\\[needs?.doc(umentation)?s?\\]"; "i")) | sub("\\[needs?.doc(umentation)?s?\\]"; "\n\n\n"; "i")')
+          echo "::set-output name=commits::$(echo ${COMMITS_MESSAGES} | tr -d '\n' )"
 
       - env:
           DATA: ${{ steps.filtered_commits.outputs.commits }}
