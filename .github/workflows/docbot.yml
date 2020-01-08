@@ -83,10 +83,12 @@ jobs:
           # this is not possible to set labels directly due to security reasons
           # the token is in clear, so no rights are given to qgis-bot
           body: |
-            ${{ format('Request for documentation in QGIS/qgis#{0} from {1}', github.event.pull_request.number, github.event.pull_request.user.login) }}
+            ### Request for documentation
+            From pull request QGIS/qgis#${{ github.event.pull_request.number }}
+            Author: @${{ github.event.pull_request.user.login }}
+            QGIS version: ${{ steps.milestone2label.outputs.label }}
 
             ${{ github.event.pull_request.title }}
-            QGIS version: ${{ steps.milestone2label.outputs.label }}
 
             ### PR Description:
             ${{ steps.get_pr_body.outputs.body }}
