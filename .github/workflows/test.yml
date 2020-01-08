@@ -54,6 +54,15 @@ jobs:
           repo: QGIS
           pull_number: 33496
 
+      # extracts the matching commits
+      - env:
+          JSON_DATA: ${{ steps.get_pr_commits.outputs.data }}
+        run: |
+          sudo apt-get install jq
+          COMMITS_MESSAGES=$(echo ${JSON_DATA} | jq '.[].commit.message | select( . | test("\\[needs?.doc(umentation)?s?\\]", "i"))')
+          echo ${COMMITS_MESSAGES}
+          echo "::set-output name=commits::${COMMITS_MESSAGES}"
+
       - env:
           DATA: ${{ steps.get_pr_commits.outputs.data }}
         run: "echo $DATA"
