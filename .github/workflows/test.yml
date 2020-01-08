@@ -40,7 +40,7 @@ jobs:
           body: "body"
 
       - env:
-          DATA: ${{ steps.get_pr_body.outputs.data }}
+          DATA: ${{ steps.get_pr_body.outputs.body }}
         run: "echo $DATA"
 
       # get commits from the PR
